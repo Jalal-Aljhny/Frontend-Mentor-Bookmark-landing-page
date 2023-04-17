@@ -20,8 +20,8 @@ let mainImage = document.querySelector(
 );
 let startTime = new Date();
 let featureTabs = document.querySelector("main .features ul");
-let featuresImage = document.querySelector("main .features-slides img");
-let featureText = document.querySelector(
+let featuresImage = document.querySelectorAll("main .features-slides img");
+let featuresText = document.querySelectorAll(
   "main .features-slides > div > div:nth-child(2)"
 );
 let extensionBoxes = document.querySelectorAll("main .downloads > div");
@@ -110,12 +110,16 @@ window.addEventListener("scroll", () => {
   if (window.scrollY >= featureTabs.offsetTop - 600) {
     featureTabs.classList.add("scrolled");
   }
-  if (window.scrollY >= featuresImage.offsetTop - 600) {
-    featuresImage.classList.add("scrolled");
-  }
-  if (window.scrollY >= featureText.offsetTop - 500) {
-    featureText.classList.add("scrolled");
-  }
+  featuresImage.forEach((image) => {
+    if (window.scrollY >= image.offsetTop - 600) {
+      image.classList.add("scrolled");
+    }
+  });
+  featuresText.forEach((text) => {
+    if (window.scrollY >= text.offsetTop - 600) {
+      text.classList.add("scrolled");
+    }
+  });
   extensionBoxes.forEach((box) => {
     if (window.scrollY >= box.offsetTop - 600) {
       box.classList.add("scrolled");
